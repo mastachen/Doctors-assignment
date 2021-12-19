@@ -1,0 +1,31 @@
+<div class="alert" *ngIf="userTasks.length < 1 && !isFetching &&!error">
+  <p class="alert__text">No tasks available!</p>
+</div>
+
+<div *ngIf="userTasks.length >= 1 && !isFetching">
+  <h2 class="heading-2">Tasks for {{ name }}</h2>
+  <ul class="tasks-list">
+    <li class="tasks-list__item" *ngFor="let task of userTasks">
+      <div class="taks-list__data-group">
+        <div class="tasks-list__title">{{ task.title }}</div>
+        <div *ngIf="task.completed" class="tasks-list__status tasks-list__status--completed">
+          Completed
+        </div>
+        <div *ngIf="!task.completed" class="tasks-list__status tasks-list__status--not-completed">
+          Not completed
+        </div>
+      </div>
+    </li>
+  </ul>
+  <p class="tasks-list__buttons">
+    <a class="btn-link" routerLink="/users">Back</a>
+  </p>
+</div>
+
+<p *ngIf="isFetching && !error">Loading...</p>
+
+<div class="alert" *ngIf="error">
+  <h3 class="heading-2">Error occured</h3>
+  <p class="alert__text">{{ error }}</p>
+  <button class="btn alert__btn" (click)="onHandleError()">Okay</button>
+</div>

@@ -1,0 +1,171 @@
+/////////////////////////////////////////////////
+// SIDEBAR NAVIGATION
+/////////////////////////////////////////////////
+.side-nav {
+  font-size: 1.4rem;
+  list-style: none;
+  margin-top: 3.5rem;
+
+  &__item {
+    position: relative;
+    &:not(:last-child) {
+        margin-bottom: .5rem;
+    }
+  }
+
+  &__item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 3px;
+    background-color: var(--color-primary);
+    transform: scaleY(0);
+    transition: transform .2s,
+                width .4s cubic-bezier(1,0,0,1) .2s, //starts slow, accelerates fast, ends slow, delay 0.2 seconds
+                background-color .1s
+  }
+
+  &__item:hover::before,
+  &__item--active::before {
+    transform: scaleY(1); //grow in Y direction
+    width: 100%;
+  }
+
+  &__item:active::before {
+    background-color: var(--color-primary);
+  }
+
+  &__link:link,
+  &__link:visited {
+    color: var(--color-grey-light);
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    padding: 1.5rem 3rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 10; //z-index only works if we have specified position
+  }
+}
+
+/////////////////////////////////////////////////
+// BUTTONS
+/////////////////////////////////////////////////
+.btn-link:link,
+.btn-link:visited,
+.btn {
+    background-color: var(--color-primary);
+    color: var(--color-grey-light);
+    border: none;
+    border-radius: 0;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    transition: all .2s;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+        background-color: var(--color-primary-dark);
+    }
+}
+
+/////////////////////////////////////////////////
+// USERS LIST
+/////////////////////////////////////////////////
+.users-list {
+  list-style-type: none;
+
+  &__item {
+    margin-bottom: 1.5rem;
+    margin-right: 2rem;
+    border-bottom: var(--line);
+  }
+
+  &__label {
+    font-weight: 600;
+  }
+
+  &__buttons {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  &__btn {
+    margin-right: 1rem;
+  }
+}
+
+/////////////////////////////////////////////////
+// TASKS
+/////////////////////////////////////////////////
+.tasks-list {
+  list-style-type: none;
+
+  &__item {
+    margin: 1rem 2rem 1.5rem 0;
+    border-bottom: var(--line);
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  &__status {
+    margin: .5rem 0 1rem 0;
+    display: inline-block;
+    padding: 0 .6rem;
+    border: 1px solid var(--color-grey-light-1);
+    color: var(--color-grey-light);
+    font-weight: 500;
+
+    &--completed {
+      background-color: var(--color-green);
+    }
+    
+    &--not-completed {
+      background-color: var(--color-red);
+    }
+  }
+}
+
+/////////////////////////////////////////////////
+// USER DETAILS
+/////////////////////////////////////////////////
+.user-details {
+  &__data-group {
+    margin-top: .5rem;
+  }
+
+  &__label {
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__data--address {
+    display: block;
+    margin-left: 1rem;
+  }
+
+  &__buttons {
+    margin-top: 1rem;
+  }
+}
+
+/////////////////////////////////////////////////
+// ALERT
+/////////////////////////////////////////////////
+.alert {
+  &__text {
+    font-size: 1.4rem;
+  }
+
+  &__btn {
+    margin-top: 1rem;
+  }
+}

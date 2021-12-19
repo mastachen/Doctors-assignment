@@ -1,0 +1,31 @@
+<div class="alert" *ngIf="users.length < 1 && !isFetching && !error">
+  <p class="alert__text">No users available!</p>
+</div>
+
+<ul class="users-list" *ngIf="users.length >= 1 && !isFetching">
+  <li class="users-list__item" *ngFor="let user of users">
+    <h3 class="heading-3">{{ user.name }}</h3>
+    <p>
+      <span class="users-list__label">Username: </span>
+      <span class="users-list__data">{{ user.username }}</span>
+    </p>
+    <p>
+      <span class="users-list__label">Email: </span>
+      <span class="users-list__data">{{ user.email }}</span>
+    </p>
+    <p class="users-list__buttons">
+      <a class="users-list__btn btn-link" [routerLink]="['/user', user.id]">Details</a>
+      <a class="users-list__btn btn-link" [routerLink]="['/user', user.id, 'tasks']" [state]="{ name: user.name }">Tasks</a>
+    </p>
+  </li>
+</ul>
+
+<p *ngIf="isFetching && !error">Loading...</p>
+
+<div class="alert" *ngIf="error">
+  <h3 class="heading-2">Error occured</h3>
+  <p class="alert__text">{{ error }}</p>
+  <button class="btn alert__btn" (click)="onHandleError()">Okay</button>
+</div>
+
+<router-outlet></router-outlet>

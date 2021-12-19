@@ -1,0 +1,89 @@
+<div class="alert" *ngIf="!success && !isFetching && !error">
+  <p class="alert__text">User data not available!</p>
+</div>
+
+<div class="user-details" *ngIf="success && !isFetching">
+  <h2 class="heading-2">{{ userDetails.name }}</h2>
+  
+  <p class="user-details__data-group">
+    <span class="user-details__label">Username: </span>
+    <span class="user-details__data">{{ userDetails.username }}</span>
+  </p>
+
+  <p class="user-details__data-group">
+    <span class="user-details__label">Email: </span>
+    <span class="user-details__data">{{ userDetails.email }}</span>
+  </p>
+
+  <p class="user-details__data-group">
+    <span class="user-details__label">Address</span>
+  </p>
+  <p class="user-details__data-group">
+    <span class="user-details__data user-details__data--address">
+      <span class="user-details__label">Street: </span>{{ userDetails.address.street }}
+    </span>
+  </p>
+  <p class="user-details__data-group">
+    <span class="user-details__data user-details__data--address">
+      <span class="user-details__label">Suite: </span>{{ userDetails.address.suite }}
+    </span>
+  </p>
+  <p class="user-details__data-group">
+    <span class="user-details__data user-details__data--address">
+      <span class="user-details__label">City: </span>{{ userDetails.address.city }}
+    </span>
+  </p>
+  <p class="user-details__data-group">
+    <span class="user-details__data user-details__data--address">
+      <span class="user-details__label">Zipcode: </span>{{ userDetails.address.zipcode }}
+    </span>
+  </p>
+  <p class="user-details__data-group">
+    <span class="user-details__data user-details__data--address">
+      <span class="user-details__label">Geographical latitude: </span>{{ userDetails.address.geo.lat }}
+    </span>
+  </p>
+  <p class="user-details__data-group">
+    <span class="user-details__data user-details__data--address">
+      <span class="user-details__label">Geographical longitude: </span>{{ userDetails.address.geo.lng }}
+    </span>
+  </p>
+
+  <p class="user-details__data-group">
+    <span class="user-details__label">Phone: </span>
+    <span class="user-details__data"></span>{{ userDetails.phone }}
+  </p>
+
+  <p class="user-details__data-group">
+    <span class="user-details__label">Website: </span>
+    <span class="user-details__data"></span>{{ userDetails.website }}
+  </p>
+
+  <p class="user-details__data-group">
+    <span class="user-details__label">Company: </span>
+    <span class="user-details__data"></span>{{ userDetails.company.name }}
+  </p>
+
+  <p class="user-details__data-group">
+    <span class="user-details__label">Catch phrase: </span>
+    <span class="user-details__data"></span>{{ userDetails.company.catchPhrase }}
+  </p>
+
+  <p class="user-details__data-group">
+    <span class="user-details__label">Business: </span>
+    <span class="user-details__data"></span>{{ userDetails.company.bs }}
+  </p>
+
+  <p class="user-details__buttons">
+    <a class="btn-link" routerLink="/users">Back</a>
+  </p>
+</div>
+
+<p *ngIf="isFetching && !error">Loading...</p>
+
+<div class="alert" *ngIf="error">
+  <h3 class="heading-2">Error occured</h3>
+  <p class="alert__text">{{ error }}</p>
+  <button class="btn alert__btn" (click)="onHandleError()">Okay</button>
+</div>
+
